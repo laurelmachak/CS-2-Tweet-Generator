@@ -1,4 +1,5 @@
 import sys
+import pprint
 
 '''
 A histogram() function which takes a source_text argument

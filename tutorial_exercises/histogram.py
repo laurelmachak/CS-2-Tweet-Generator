@@ -52,7 +52,31 @@ def stochastic(frequency_dict):
 
 
 
+def first_order_mc(text_list, histo):
+    markov = {}
+    for key in histo:
+        markov[key] = {}
 
+    for index in range(len(text_list)-1):
+        current_word = text_list[index]
+        next_word = text_list[index + 1]
+        if next_word in markov[current_word]:
+            markov[current_word][next_word] += 1
+        else:
+            markov[current_word][next_word] = 1
+    return markov
+
+def make_sentence(num_of_words, mc_chain_dict):
+    for _ in range(num_of_words):
+        pass
+
+
+
+
+
+
+
+''' __TESTS__ '''
 
 
 larger_text = """and that this thought of the end and advantage is even
@@ -73,6 +97,14 @@ their service his heart then goes into his head and one henceforth"""
 
 larger_text.strip()
 convert_to_array = larger_text.split()
+
+
+suess = ['one', 'fish', 'two','fish','red','fish','blue','fish']
+ex_histo = create_histogram(convert_to_array)
+print(first_order_mc(convert_to_array, ex_histo))
+hist_2 = create_histogram(suess)
+print(first_order_mc(suess, hist_2))
+
 
 
 # example_log = create_log(example_histo)
