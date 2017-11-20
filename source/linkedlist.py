@@ -128,6 +128,35 @@ class LinkedList(object):
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
+        current_node = self.head
+        previous_node = None
+        if not self.is_empty():
+            while current_node.data != item:
+                previous_node = current_node
+                current_node = current_node.next
+                if current_node is self.tail:
+                    return 'Item not found: {}'.format(item)
+            if current_node == self.head:
+                if self.head == self.tail:
+                    self.head.data = None
+                    self.tail.next = None
+                    self.tail = None
+                else:
+                    self.head.data = None
+                    self.head = self.head.next
+            else:
+                if current_node = self.tail:
+                    pass
+                else:
+                    pass
+                
+
+
+
+
+
+        #previous_node.next = current_node.next
+
 
 
 def test_linked_list():

@@ -70,6 +70,8 @@ def make_sentence(num_of_words, mc_chain_dict):
     for _ in range(num_of_words):
         pass
 
+# remember you can get the length of a dictionary
+
 
 
 
