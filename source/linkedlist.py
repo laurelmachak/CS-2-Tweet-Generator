@@ -95,7 +95,7 @@ class LinkedList(object):
             self.head = new_node
             self.head.next = self.tail
         else:
-            self.head.next = self.head
+            new_node.next = self.head
             self.head = new_node
 
 
@@ -128,6 +128,7 @@ class LinkedList(object):
         # TODO: Update previous node to skip around node with matching data
         # TODO: Otherwise raise error to tell user that delete has failed
         # Hint: raise ValueError('Item not found: {}'.format(item))
+        # return
         current_node = self.head
         previous_node = None
         if not self.is_empty():
@@ -145,11 +146,11 @@ class LinkedList(object):
                     self.head.data = None
                     self.head = self.head.next
             else:
-                if current_node = self.tail:
+                if current_node == self.tail:
                     pass
                 else:
                     pass
-                
+
 
 
 
@@ -184,7 +185,7 @@ def test_linked_list():
     print(ll.find(lambda item: item == 'X'))
 
     # Enable this after implementing delete method
-    delete_implemented = False
+    delete_implemented = True
     if delete_implemented:
         print('\nTesting delete:')
         for item in ['B', 'C', 'A']:
