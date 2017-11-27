@@ -131,25 +131,57 @@ class LinkedList(object):
         # return
         current_node = self.head
         previous_node = None
-        if not self.is_empty():
-            while current_node.data != item:
+        found = False
+
+        while not found:
+            if self.is_empty():
+                raise ValueError('Item not found: {}'.format(item))
+                return
+            # elif self.head == self.tail:
+            #     if self.head.data == item:
+            #         self.head, self.tail = None, None
+            #         found = True
+            #     else:
+            #         raise ValueError('Item not found: {}'.format(item))
+            elif self.head.data == item:
+                if self.head == self.tail:
+                    self.head, self.tail = None, None
+                    found = True
+                else:
+                    self.head = self.head.next 
+                    found = True
+            else:
+                if current_node.data == item:
+                    if current_node == self.tail:
+                        previous_node.next = None
+                        found = True
+                    else:
+                        previous_node.next = current_node.next
+                        found = True
+                elif (current_node == self.tail) and (current_node.data != item):
+                    raise ValueError('Item not found: {}'.format(item))
+                    return
+
                 previous_node = current_node
                 current_node = current_node.next
-                if current_node is self.tail:
-                    return 'Item not found: {}'.format(item)
-            if current_node == self.head:
-                if self.head == self.tail:
-                    self.head.data = None
-                    self.tail.next = None
-                    self.tail = None
-                else:
-                    self.head.data = None
-                    self.head = self.head.next
-            else:
-                if current_node == self.tail:
-                    pass
-                else:
-                    pass
+
+            # previous_node = current_node
+            # current_node = current_node.next
+            #     if current_node is self.tail:
+            #         return 'Item not found: {}'.format(item)
+            # if current_node == self.head:
+            #     if self.head == self.tail:
+            #         self.head.data = None
+            #         self.tail.next = None
+            #         self.tail = None
+            #     else:
+            #         self.head.data = None
+            #         self.head = self.head.next
+            # else:
+            #     if current_node == self.tail:
+            #         pass
+            #     else:
+            #         pass
 
 
 
