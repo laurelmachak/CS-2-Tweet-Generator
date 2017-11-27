@@ -148,12 +148,13 @@ class LinkedList(object):
                     self.head, self.tail = None, None
                     found = True
                 else:
-                    self.head = self.head.next 
+                    self.head = self.head.next
                     found = True
             else:
                 if current_node.data == item:
                     if current_node == self.tail:
                         previous_node.next = None
+                        self.tail = previous_node 
                         found = True
                     else:
                         previous_node.next = current_node.next
