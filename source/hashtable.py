@@ -60,6 +60,13 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
+        bucket = self._bucket_index(key)
+        if not self.buckets[bucket].is_empty() and self.buckets[bucket].find(lambda key: key == bucket.data[0]):
+            return True
+        return False
+
+
+
 
     def get(self, key):
         """Return the value associated with the given key, or raise KeyError.
@@ -77,6 +84,12 @@ class HashTable(object):
         # TODO: Check if key-value entry exists in bucket
         # TODO: If found, update value associated with given key
         # TODO: Otherwise, insert given key-value entry into bucket
+        bucket = self._bucket_index(key)
+        if self.contains(key):
+            pass
+        else:
+            self.buckets[bucket].append((key,value))
+
 
     def delete(self, key):
         """Delete the given key from this hash table, or raise KeyError.
