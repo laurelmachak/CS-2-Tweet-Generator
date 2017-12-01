@@ -60,9 +60,10 @@ class HashTable(object):
         TODO: Running time: O(???) Why and under what conditions?"""
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
-        bucket = self._bucket_index(key)
-        if not self.buckets[bucket].is_empty() and self.buckets[bucket].find(lambda key: key == self.buckets[bucket].data[0]):
-            return True
+        bucket_of_key = self._bucket_index(key)
+        for each_key, value in self.buckets[bucket_of_key].items():
+            if each_key == key:
+                return True
         return False
 
 
