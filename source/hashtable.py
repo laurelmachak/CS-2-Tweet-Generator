@@ -61,7 +61,7 @@ class HashTable(object):
         # TODO: Find bucket where given key belongs
         # TODO: Check if key-value entry exists in bucket
         bucket = self._bucket_index(key)
-        if not self.buckets[bucket].is_empty() and self.buckets[bucket].find(lambda key: key == bucket.data[0]):
+        if not self.buckets[bucket].is_empty() and self.buckets[bucket].find(lambda key: key == self.buckets[bucket].data[0]):
             return True
         return False
 
